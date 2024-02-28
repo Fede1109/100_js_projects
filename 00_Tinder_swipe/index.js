@@ -31,6 +31,15 @@ function startDrag (event) {
         const deg = pullDeltaX / 14
         actualCard.style.transform = `translateX(${pullDeltaX}px) rotate(${deg}deg)`
         actualCard.style.cursor = 'grabbing'
+
+        const opacity = Math.abs(pullDeltaX) / 100
+        const isRight = pullDeltaX > 0
+
+        const choideEl = isRight
+        ? actualCard.querySelector('.choice.like')
+        : actualCard.querySelector('.choice.nope')
+
+        choideEl.style.opacity = opacity
     }
 
     function onEnd(event){
